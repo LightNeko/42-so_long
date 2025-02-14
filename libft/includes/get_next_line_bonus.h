@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 22:13:44 by znicola           #+#    #+#             */
-/*   Updated: 2025/01/18 23:55:03 by znicola          ###   ########.fr       */
+/*   Created: 2024/10/13 20:18:25 by znicola           #+#    #+#             */
+/*   Updated: 2025/02/03 10:27:59 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int create_rgba(int r, int g, int b, int a)
-{
-	return (a << 24 | r << 16 | g << 8 | b);
-}
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
 
-int	get_a(int argb)
-{
-	return ((argb >> 24) & 0xFF);
-}
+# endif
 
-int	get_r(int argb)
-{
-	return ((argb >> 16) & 0xFF);
-}
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdint.h>
+# include <stdio.h>
+# include "libft.h"
 
-int	get_g(int argb)
-{
-	return ((argb >> 8) & 0xFF);
-}
+char	*ft_strndup(const char *s, size_t n);
 
-int	get_b(int argb)
-{
-	return (argb & 0xFF);
-}
+#endif

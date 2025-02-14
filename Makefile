@@ -1,10 +1,10 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Werror -Wextra -Wall -I/usr/include -Imlx_linux -O3
+CFLAGS = -Werror -Wextra -Wall -I/usr/include -Imlx_linux -O3 -g
 
 SRC_DIR = src
-SRCS = main.c colors.c color_utils.c hooks.c img.c draw.c
+SRCS = main.c map.c checks.c player.c keys.c hooks.c img.c draw.c items.c exit.c movement.c error.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 

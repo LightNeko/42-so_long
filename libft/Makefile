@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -I includes
 
 SRC_DIR = src
 PRINTF_DIR = $(SRC_DIR)/printf
+GNL_DIR = $(SRC_DIR)/get_next_line
 
 SRC_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_isascii.c \
             ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
@@ -16,8 +17,11 @@ SRC_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_isasc
 PRINTF_FILES = ft_puthex_fd.c ft_putptr_fd.c ft_putunsigned_fd.c \
                printfhandlers.c printfhandlers2.c
 
+GNL_FILES = get_next_line_bonus.c get_next_line_utils_bonus.c
+
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
-      $(addprefix $(PRINTF_DIR)/, $(PRINTF_FILES))
+      $(addprefix $(PRINTF_DIR)/, $(PRINTF_FILES)) \
+	  $(addprefix $(GNL_DIR)/, $(GNL_FILES))
 
 OBJ = $(SRC:.c=.o)
 
