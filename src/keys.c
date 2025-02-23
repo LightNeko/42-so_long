@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:55:24 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/06 08:58:09 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 15:55:59 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	init_keys(t_data *data)
 	data->k.down = 0;
 	data->k.right = 0;
 	data->k.left = 0;
+	data->k.just_pressed = 0;
 }
