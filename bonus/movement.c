@@ -6,13 +6,13 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:51:39 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 16:21:22 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 23:06:08 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-static void	detect_tile(t_data *data)
+static void	detect_tile(t_data *data, long long *time)
 {
 	data->p.state = 1;
 	if (data->p.frame == 0)
@@ -36,9 +36,10 @@ static void	detect_tile(t_data *data)
 		ft_printf("CONGRATULATIONS!\n");
 		exit(0);
 	}
+	data->p.last_move_time = *time;
 }
 
-int	move_up(t_data *data)
+int	move_up(t_data *data, long long *time)
 {
 	int	next_tile;
 
@@ -50,11 +51,11 @@ int	move_up(t_data *data)
 	data->p.pos_y = data->p.pos_y - 1;
 	data->p.on_tile = data->m.map[data->p.pos_y][data->p.pos_x];
 	data->m.map[data->p.pos_y][data->p.pos_x] = 'P';
-	detect_tile(data);
+	detect_tile(data, time);
 	return (1);
 }
 
-int	move_down(t_data *data)
+int	move_down(t_data *data, long long *time)
 {
 	int	next_tile;
 
@@ -66,11 +67,11 @@ int	move_down(t_data *data)
 	data->p.pos_y = data->p.pos_y + 1;
 	data->p.on_tile = data->m.map[data->p.pos_y][data->p.pos_x];
 	data->m.map[data->p.pos_y][data->p.pos_x] = 'P';
-	detect_tile(data);
+	detect_tile(data, time);
 	return (2);
 }
 
-int	move_left(t_data *data)
+int	move_left(t_data *data, long long *time)
 {
 	int	next_tile;
 
@@ -82,11 +83,11 @@ int	move_left(t_data *data)
 	data->p.pos_x = data->p.pos_x - 1;
 	data->p.on_tile = data->m.map[data->p.pos_y][data->p.pos_x];
 	data->m.map[data->p.pos_y][data->p.pos_x] = 'P';
-	detect_tile(data);
+	detect_tile(data, time);
 	return (3);
 }
 
-int	move_right(t_data *data)
+int	move_right(t_data *data, long long *time)
 {
 	int	next_tile;
 
@@ -98,6 +99,6 @@ int	move_right(t_data *data)
 	data->p.pos_x = data->p.pos_x + 1;
 	data->p.on_tile = data->m.map[data->p.pos_y][data->p.pos_x];
 	data->m.map[data->p.pos_y][data->p.pos_x] = 'P';
-	detect_tile(data);
+	detect_tile(data, time);
 	return (4);
 }

@@ -8,7 +8,7 @@ SRC_DIR = src
 SRCS = main.c map.c checks.c player.c keys.c hooks.c img.c draw.c items.c exit.c movement.c error.c bfs.c free.c
 
 BSRC_DIR = bonus
-BSRCS = main.c map.c checks.c player.c keys.c hooks.c img.c draw.c items.c exit.c movement.c error.c bfs.c free.c
+BSRCS = main.c map.c checks.c player.c keys.c hooks.c img.c draw.c items.c exit.c movement.c error.c bfs.c free.c digits.c ui.c enemy.c enemy_movement.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 BOBJS = $(addprefix $(BSRC_DIR)/, $(BSRCS:.c=.o))

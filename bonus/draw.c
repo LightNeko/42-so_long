@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:30:30 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 17:23:20 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 21:47:44 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	set_camera_layer(t_data *data)
 {
@@ -79,6 +79,13 @@ static void	check_map_content(t_data *data, char content, int rx, int ry)
 		render_img(data, &data->e.s, rx, ry);
 	else if (content == 'X')
 		render_img(data, &data->e.so, rx, ry);
+	else if (content == 'F')
+	{
+		if (data->f.frame == 0)
+			render_img(data, &data->f.s1, rx, ry);
+		if (data->f.frame == 1)
+			render_img(data, &data->f.s2, rx, ry);
+	}
 }
 
 void	draw_map_layer(t_data *data)

@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:40:39 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 16:08:51 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 19:42:41 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	load_img(t_data *data, t_img *im, char *path, char *imgname)
 {

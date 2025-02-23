@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:45:56 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/22 17:03:46 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 18:21:23 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	get_exit_position(t_exit *exit, t_map map)
 {

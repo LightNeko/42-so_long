@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:06:49 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 16:18:22 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 21:39:16 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	get_player_position(t_player *player, t_map map)
 {
@@ -53,5 +53,7 @@ void	init_player(t_data *data)
 	data->p.frame = 0;
 	data->p.on_tile = '0';
 	data->p.steps = 0;
+	data->p.move_cooldown = PLAYER_MOVE_RATE;
+	data->p.last_move_time = 0;
 	get_player_position(&data->p, data->m);
 }

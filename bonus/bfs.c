@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:09:04 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/22 17:34:18 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 17:59:14 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	clean_dmap(t_map *map)
 {

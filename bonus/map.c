@@ -6,11 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 07:10:21 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 17:20:07 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 18:36:39 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <string.h>
 
 static void	check_first_line(char **line, int fd, t_data *data)
@@ -59,7 +59,7 @@ static char	**load_map(t_data *data, char *path, size_t len, size_t llen)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		manage_error(data, 2, "Error loading the file", path);
+		manage_error(data, 2, "Error loading file", path);
 	map = calloc(len, sizeof(char *));
 	if (!map)
 		manage_error(data, 2, "store_map - calloc (1)", path);

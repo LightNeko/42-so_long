@@ -6,33 +6,11 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:19:12 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 17:23:59 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/23 21:43:57 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-static void	print_dmap(t_map map)
-{
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y < map.len)
-	{
-		x = 0;
-		while (x < map.llen)
-		{
-			if (map.dmap[y][x] == -1 || map.dmap[y][x] >= 10)
-				ft_printf(" %d", map.dmap[y][x]);
-			else
-				ft_printf("  %d", map.dmap[y][x]);
-			x++;
-		}
-		ft_printf("\n");
-		y++;
-	}
-}
+#include "so_long_bonus.h"
 
 static void	init_data(t_data *data, char **argv)
 {
@@ -50,76 +28,76 @@ static void	init_data(t_data *data, char **argv)
 		data->wh = data->m.len * TILE_SIZE;
 	else
 		data->wh = WIN_H;
+	init_digits(data);
 	init_player(data);
+	init_enemy(data);
 	init_keys(data);
 	init_items(data);
 	init_exit(data);
 	check_reachable_items(data, &data->m);
-	print_dmap(data->m);
 	perform_map_checks(data);
 	data->window = mlx_new_window(data->mlx, data->ww, data->wh, "so_long");
-	data->frame = 0;
 }
 
 static void	handle_movement(t_data *data)
 {
-	if (data->k.left)
+	struct timeval	tv;
+	long long		current_time;
+	long long		elapsed;
+
+	gettimeofday(&tv, NULL);
+	current_time = tv.tv_sec * 1000000 + tv.tv_usec;
+	elapsed = current_time - data->p.last_move_time;
+	if (elapsed >= data->p.move_cooldown)
 	{
-		move_left(data);
-		print_dmap(data->m);
-	}
-	if (data->k.up)
-	{
-		move_up(data);
-		print_dmap(data->m);
-	}
-	if (data->k.right)
-	{
-		move_right(data);
-		print_dmap(data->m);
-	}
-	if (data->k.down)
-	{
-		move_down(data);
-		print_dmap(data->m);
+		if (data->k.left)
+			move_left(data, &current_time);
+		if (data->k.up)
+			move_up(data, &current_time);
+		if (data->k.right)
+			move_right(data, &current_time);
+		if (data->k.down)
+			move_down(data, &current_time);
 	}
 }
 
 static int	update(t_data *data)
 {
-	draw_map_layer(data);
-	if (data->k.just_pressed == 1)
+	struct timeval	tv;
+	long long		current_time;
+	long long		elapsed;
+
+	gettimeofday(&tv, NULL);
+	current_time = tv.tv_sec * 1000000 + tv.tv_usec;
+	elapsed = current_time - data->last_frame_time;
+	if (elapsed >= 16666)
 	{
-		data->k.just_pressed = 2;
+		draw_map_layer(data);
+		draw_ui_layer(data);
 		handle_movement(data);
-		data->frame = 0;
+		move_enemy(data);
+		if (data->k.left == 0 && data->k.up == 0
+			&& data->k.right == 0 && data->k.down == 0)
+			data->p.state = 0;
+		if (data->i.count == data->i.gained)
+		{
+			data->i.gained++;
+			data->m.map[data->e.pos_y][data->e.pos_x] = 'X';
+		}
+		data->last_frame_time = current_time;
 	}
-	if (data->frame == SPEED)
-	{
-		handle_movement(data);
-		data->frame = 0;
-	}
-	if (data->k.left == 0 && data->k.up == 0
-		&& data->k.right == 0 && data->k.down == 0)
-	{
-		data->k.just_pressed = 0;
-		data->p.state = 0;
-	}
-	if (data->i.count == data->i.gained)
-	{
-		data->i.gained++;
-		data->m.map[data->e.pos_y][data->e.pos_x] = 'X';
-	}
-	data->frame++;
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data			data;
+	struct timeval	tv;
 
 	if (argc != 2)
 		manage_error(NULL, 1, "Invalid arguments: must have 1 argument", NULL);
+	gettimeofday(&tv, NULL);
+	data.last_frame_time = tv.tv_sec * 1000000 + tv.tv_usec;
 	check_file_format(argv[1]);
 	init_data(&data, argv);
 	set_hooks(&data);
