@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 22:09:56 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/24 14:19:36 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:35:54 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	move_enemy_left(t_data *data, int *y, int *x)
 	{
 		free_resources(data);
 		mlx_destroy_window(data->mlx, data->window);
+		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		ft_printf("GAME OVER!\n");
 		exit(0);
