@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 07:10:21 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 17:20:07 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:40:19 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static int	**init_distance(t_data *data, t_map map)
 
 void	init_map(char *map_file, t_data *data)
 {
-	data->m.path = ft_strjoin(MAP_PATH, map_file);
+	data->m.path = ft_strdup(map_file);
 	if (!data->m.path)
 		manage_error(data, 2, "map_path", NULL);
 	data->m.len = count_lines(data, data->m.path, &data->m.llen);

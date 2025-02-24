@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 07:10:21 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/24 14:07:48 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:42:46 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static int	**init_distance(t_data *data, t_map map)
 
 void	init_map(char *map_file, t_data *data)
 {
-	data->m.path = ft_strjoin(MAP_PATH, map_file);
+	data->m.path = ft_strdup(map_file);
 	if (!data->m.path)
 		manage_error(data, 2, "map_path", NULL);
 	data->m.len = count_lines(data, data->m.path, &data->m.llen);
@@ -112,7 +112,6 @@ void	init_map(char *map_file, t_data *data)
 		manage_error(data, 1, "Invalid Map: P count is not 1", data->m.path);
 	if (data->e.count != 1)
 		manage_error(data, 1, "Invalid Map: E count is not 1", data->m.path);
-	ft_printf("%d\n", data->f.count);
 	if (data->f.count > 1)
 		manage_error(data, 1, "Invalid Map: Max 1 foe allowed", data->m.path);
 	if (data->i.count < 1)

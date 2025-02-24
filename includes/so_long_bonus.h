@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:02:50 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/24 12:55:48 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:50:12 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define WIN_W 576
 # define WIN_H 640
 # define IMG_PATH	"./assets/img/"
-# define MAP_PATH	"./maps/"
 # define PLAYER_MOVE_RATE 200000
 # define ENEMY_MOVE_RATE 400000
 
