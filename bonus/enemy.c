@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 21:23:24 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 23:01:38 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:20:24 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ static void	get_enemy_position(t_foe *enemy, t_map map)
 
 static void	move_to_next_cell(t_data *data, int *y, int *x)
 {
-	int dmap_position;
+	int	dmap_position;
 
 	dmap_position = data->m.dmap[*y][*x];
-	if (data->m.dmap[*y][*x - 1] < dmap_position && data->m.dmap[*y][*x - 1] > -1)
+	if (data->m.dmap[*y][*x - 1] < dmap_position
+		&& data->m.dmap[*y][*x - 1] > -1)
 		move_enemy_left(data, y, x);
-	else if (data->m.dmap[*y - 1][*x] < dmap_position && data->m.dmap[*y - 1][*x] > -1)
+	else if (data->m.dmap[*y - 1][*x] < dmap_position
+		&& data->m.dmap[*y - 1][*x] > -1)
 		move_enemy_up(data, y, x);
-	else if (data->m.dmap[*y][*x + 1] < dmap_position && data->m.dmap[*y][*x + 1] > -1)
+	else if (data->m.dmap[*y][*x + 1] < dmap_position
+		&& data->m.dmap[*y][*x + 1] > -1)
 		move_enemy_right(data, y, x);
-	else if (data->m.dmap[*y + 1][*x] < dmap_position && data->m.dmap[*y + 1][*x] > -1)
+	else if (data->m.dmap[*y + 1][*x] < dmap_position
+		&& data->m.dmap[*y + 1][*x] > -1)
 		move_enemy_down(data, y, x);
 }
 

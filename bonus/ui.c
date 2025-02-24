@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:22:17 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 19:07:06 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:18:43 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	get_decimals(int *arr)
 {
-	int i;
-	int n;
-	
+	int	i;
+	int	n;
+
 	i = 9;
 	n = 1;
 	while (i >= 0)
@@ -54,10 +54,10 @@ static void	render_digits(t_data *data, int digit, int i)
 void	draw_ui_layer(t_data *data)
 {
 	int	dec[10];
-	int digits[10];
+	int	digits[10];
 	int	i;
 	int	count;
-	
+
 	get_decimals(dec);
 	count = data->p.steps;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:19:12 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 21:43:57 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:19:07 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_data(t_data *data, char **argv)
 	data->p.count = 0;
 	data->e.count = 0;
 	data->i.count = 0;
+	data->f.count = 0;
 	init_map(argv[1], data);
 	if (data->m.llen * TILE_SIZE < WIN_W)
 		data->ww = data->m.llen * TILE_SIZE;
@@ -50,13 +51,13 @@ static void	handle_movement(t_data *data)
 	elapsed = current_time - data->p.last_move_time;
 	if (elapsed >= data->p.move_cooldown)
 	{
-		if (data->k.left)
+		if (data->k.left && !data->k.right)
 			move_left(data, &current_time);
-		if (data->k.up)
+		if (data->k.up && !data->k.down)
 			move_up(data, &current_time);
-		if (data->k.right)
+		if (data->k.right && !data->k.left)
 			move_right(data, &current_time);
-		if (data->k.down)
+		if (data->k.down && !data->k.up)
 			move_down(data, &current_time);
 	}
 }
@@ -75,7 +76,8 @@ static int	update(t_data *data)
 		draw_map_layer(data);
 		draw_ui_layer(data);
 		handle_movement(data);
-		move_enemy(data);
+		if (data->f.count == 1)
+			move_enemy(data);
 		if (data->k.left == 0 && data->k.up == 0
 			&& data->k.right == 0 && data->k.down == 0)
 			data->p.state = 0;

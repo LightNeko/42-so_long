@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:01:52 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 21:35:58 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:20:58 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ void	check_line_content(t_data *data, int fd, char *l)
 	p = l;
 	while (*p != '\n')
 	{
-		if (*p == '0' || *p == '1' || *p == 'F')
+		if (*p == '0' || *p == '1')
 			;
+		else if (*p == 'F')
+			data->f.count++;
 		else if (*p == 'P')
 			data->p.count++;
 		else if (*p == 'C')

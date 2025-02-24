@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:02:50 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 23:03:33 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 12:55:48 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_foe
 	t_img		s1;
 	t_img		s2;
 	int			frame;
+	int			count;
 	char		on_tile;
 	int			pos_x;
 	int			pos_y;

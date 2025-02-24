@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 22:09:56 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 23:04:22 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 14:19:36 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	move_enemy_up(t_data *data, int *y, int *x)
 		exit(0);
 	}
 }
+
 void	move_enemy_right(t_data *data, int *y, int *x)
 {
 	data->m.map[*y][*x] = data->f.on_tile;

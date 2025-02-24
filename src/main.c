@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:19:12 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/23 17:36:21 by znicola          ###   ########.fr       */
+/*   Updated: 2025/02/24 12:57:36 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,22 @@ static void	init_data(t_data *data, char **argv)
 
 static void	handle_movement(t_data *data)
 {
-	if (data->k.left)
+	if (data->k.left && !data->k.right)
 	{
 		move_left(data);
 		print_dmap(data->m);
 	}
-	if (data->k.up)
+	if (data->k.up && !data->k.down)
 	{
 		move_up(data);
 		print_dmap(data->m);
 	}
-	if (data->k.right)
+	if (data->k.right && !data->k.left)
 	{
 		move_right(data);
 		print_dmap(data->m);
 	}
-	if (data->k.down)
+	if (data->k.down && !data->k.up)
 	{
 		move_down(data);
 		print_dmap(data->m);
