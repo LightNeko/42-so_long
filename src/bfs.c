@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:09:04 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/22 17:34:18 by znicola          ###   ########.fr       */
+/*   Updated: 2025/03/01 11:45:32 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	inner_gen_dmap(t_map *map, t_point pos, int *rear, int *queue)
 		nx = pos.x + dx[i];
 		if (ny >= 0 && ny < (int)map->len && nx >= 0 && nx < (int)map->llen)
 		{
+			if (map->map[ny][nx] == 'E')
+				map->dmap[ny][nx] = -2;
 			if (map->map[ny][nx] != '1' && map->dmap[ny][nx] == -1)
 			{
 				map->dmap[ny][nx] = map->dmap[pos.y][pos.x] + 1;

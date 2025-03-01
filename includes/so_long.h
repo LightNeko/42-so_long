@@ -6,7 +6,7 @@
 /*   By: znicola <znicola@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:02:50 by znicola           #+#    #+#             */
-/*   Updated: 2025/02/24 15:49:48 by znicola          ###   ########.fr       */
+/*   Updated: 2025/03/01 11:30:33 by znicola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_H 640
 # define IMG_PATH	"./assets/img/"
 # define SPEED 300
-# define DEBUG_MODE 0
+# define DEBUG_MODE 1
 
 typedef struct s_point
 {
